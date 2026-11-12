@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "air-kya-edge",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "vars": {
+    // Your AIR verification program, accepted issuers and credential type (see kya.config.ts).
+    "KYA_PROGRAM_ID": "",
+    "KYA_TRUSTED_ISSUERS": "",
+    "KYA_VCT": "",
+    // Empty: forward to the zone's own origin (Worker deployed on a route in front of your site).
+    // Set it to proxy a separate host, e.g. when testing on workers.dev.
+    "ORIGIN_URL": ""
+  },
+  // Secret: `npx wrangler secret put KYA_ORIGIN_SECRET`
+  "durable_objects": { "bindings": [{ "name": "NONCES", "class_name": "NonceStore" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["NonceStore"] }],
+  "observability": { "enabled": true }
+  // Put the Worker in front of your site:
+  // "routes": [{ "pattern": "example.com/*", "zone_name": "example.com" }]
+}

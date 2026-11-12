@@ -1,0 +1,8 @@
+# Copy to .dev.vars for local runs against your own AIR program (or run `npm run setup` for the test issuer).
+KYA_PROGRAM_ID=<AIR verification program ID>
+KYA_TRUSTED_ISSUERS=did:web:<issuer host>
+KYA_VCT=<credential type>
+# Optional: trust DID documents without fetching them.
+# KYA_PINNED_DIDS='[{"id":"did:web:...","verificationMethod":[...],"assertionMethod":[...]}]'
+ORIGIN_URL=http://127.0.0.1:8788
+KYA_ORIGIN_SECRET=<random string>
